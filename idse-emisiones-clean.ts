@@ -251,7 +251,7 @@ async function main() {
     console.log(`\n💾 Data saved to: ${outputFile}`);
 
   } catch (error) {
-    console.error("❌ Fatal error:", error);
+    console.error("❌ Script failed");
   } finally {
     clearAllPFX();
     await endPool();

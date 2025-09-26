@@ -183,7 +183,7 @@ async function downloadFile(
     return true;
 
   } catch (error) {
-    console.log(`        ❌ Error downloading:`, error);
+    console.log(`        ❌ Download failed`);
     return false;
   }
 }
@@ -289,7 +289,7 @@ async function processPatronDownloads(
     return { patron, downloads: downloadCount };
 
   } catch (error) {
-    console.log(`     ❌ Error processing patron ${patron}:`, error);
+    console.log(`     ❌ Failed to process patron ${patron}`);
     return { patron, downloads: 0 };
   }
 }
@@ -390,7 +390,7 @@ async function processClient(client: any): Promise<{ client: string; totalDownlo
     };
 
   } catch (error) {
-    console.log(`     ❌ Error:`, error);
+    console.log(`     ❌ Failed`);
     return {
       client: client.business_name,
       totalDownloads: 0,
@@ -466,7 +466,7 @@ async function main() {
     }
 
   } catch (error) {
-    console.error("❌ Fatal error:", error);
+    console.error("❌ Script failed");
   } finally {
     clearAllPFX();
     await endPool();

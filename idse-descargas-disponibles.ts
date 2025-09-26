@@ -173,7 +173,7 @@ async function getPatronDescargas(
     return patronInfo;
 
   } catch (error) {
-    console.log(`     ❌ Error getting downloads for patron ${patron}:`, error);
+    console.log(`     ❌ Failed to get downloads for patron ${patron}`);
     return null;
   }
 }
@@ -307,7 +307,7 @@ async function main() {
       if (result.status === 'SUCCESS') {
         console.log(`✅ ${result.patrones.length} patrones`);
       } else {
-        console.log(`❌ ${result.error}`);
+        console.log(`❌ Failed`);
       }
 
       // Delay between clients
@@ -356,7 +356,7 @@ async function main() {
     console.log(`\n\n💾 Data saved to: ${outputFile}`);
 
   } catch (error) {
-    console.error("❌ Fatal error:", error);
+    console.error("❌ Script failed");
   } finally {
     clearAllPFX();
     await endPool();

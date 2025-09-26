@@ -6,6 +6,7 @@ import { storePFX, clearAllPFX } from "./pfx-server";
 import * as cheerio from 'cheerio';
 import * as fs from 'fs';
 import * as path from 'path';
+import AdmZip from 'adm-zip';
 
 interface DescargaInfo {
   periodo: string;
@@ -56,7 +57,8 @@ function generateFileName(
   tipoDescarga: string,
   periodo: string,
   tipoEmision: string,
-  formato: string
+  formato: string,
+  actualExtension?: string
 ): string {
   // Clean patron for filename
   const cleanPatron = patron.replace(/[^a-zA-Z0-9]/g, '');
@@ -67,14 +69,18 @@ function generateFileName(
   // Determine base name (EMA or EBA)
   const baseName = tipoEmision.includes('mensual') ? 'EMA' : 'EBA';
 
-  // Determine extension
-  let extension = '.pdf';
-  if (formato.toLowerCase().includes('excel')) {
-    extension = '.xlsx';
-  } else if (formato.toLowerCase().includes('sua')) {
-    extension = '.sua';
-  } else if (formato.toLowerCase().includes('visor')) {
-    extension = '.vis';
+  // Use actual extension if provided, otherwise determine from tipoDescarga
+  let extension = actualExtension || '.pdf';
+  if (!actualExtension) {
+    if (tipoDescarga.includes('EXCEL')) {
+      extension = '.xlsx';
+    } else if (tipoDescarga.includes('SUA')) {
+      extension = '.sua';
+    } else if (tipoDescarga === 'EMA' || tipoDescarga === 'EBA') {
+      extension = '.vis';
+    } else if (tipoDescarga.includes('PDF')) {
+      extension = '.pdf';
+    }
   }
 
   // Format: PATRON_EMA_2025_08_PDF.pdf
@@ -123,7 +129,44 @@ async function downloadFile(
     // Get the binary data
     const buffer = Buffer.from(await response.arrayBuffer());
 
-    // Generate filename
+    // Check if it's a ZIP file
+    if (buffer.length > 4 && buffer[0] === 0x50 && buffer[1] === 0x4B) {
+      // It's a ZIP file, extract the content
+      try {
+        const zip = new AdmZip(buffer);
+        const entries = zip.getEntries();
+
+        if (entries.length > 0) {
+          const entry = entries[0]; // Get first file from ZIP
+          const extractedBuffer = entry.getData();
+          const extractedName = entry.entryName;
+
+          // Get actual extension from extracted file
+          const actualExtension = path.extname(extractedName);
+
+          // Generate filename with actual extension
+          const filename = generateFileName(
+            patron,
+            descarga.tipoDescarga,
+            descarga.periodo,
+            descarga.tipoEmision,
+            descarga.formato,
+            actualExtension
+          );
+
+          // Save extracted file
+          const filePath = path.join(outputDir, filename);
+          fs.writeFileSync(filePath, extractedBuffer);
+
+          console.log(`        ✅ Downloaded & extracted: ${filename} (${extractedBuffer.length} bytes from ZIP)`);
+          return true;
+        }
+      } catch (zipError) {
+        console.log(`        ⚠️ ZIP extraction failed, saving as-is`);
+      }
+    }
+
+    // Not a ZIP or extraction failed, save as-is
     const filename = generateFileName(
       patron,
       descarga.tipoDescarga,
@@ -212,9 +255,17 @@ async function processPatronDownloads(
           estatus: cells[3]
         };
 
-        // Extract tipo descarga from onclick
-        const onclickAttr = $(row).find('a').attr('onclick') || '';
-        const tipoMatch = onclickAttr.match(/descargarArchivo\('([^']+)'\)/);
+        // Extract tipo descarga from onclick or href
+        const linkElement = $(row).find('a');
+        const onclickAttr = linkElement.attr('onclick') || '';
+        const hrefAttr = linkElement.attr('href') || '';
+
+        // Try onclick first, then href
+        let tipoMatch = onclickAttr.match(/descargarArchivo\('([^']+)'\)/);
+        if (!tipoMatch) {
+          tipoMatch = hrefAttr.match(/descargarArchivo\('([^']+)'\)/);
+        }
+
         if (tipoMatch) {
           descarga.tipoDescarga = tipoMatch[1];
         }

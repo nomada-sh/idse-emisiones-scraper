@@ -9,12 +9,16 @@ bun.lockb
 
 # Output files
 idse-output/
+idse-downloads/
 *.html
 emisiones_*.json
+descargas_disponibles_*.json
 debug_*.html
 step*.html
 consulta-emision.html
 emision-page.html
+test-extract.ts
+debug-download.ts
 
 # Certificates (IMPORTANT: Never commit certificates)
 *.pfx

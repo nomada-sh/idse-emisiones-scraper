@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+bun.lockb
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Output files
+idse-output/
+*.html
+emisiones_*.json
+debug_*.html
+step*.html
+consulta-emision.html
+emision-page.html
+
+# Certificates (IMPORTANT: Never commit certificates)
+*.pfx
+*.cer
+*.key
+*.p12
+certificates/
+credentials.txt
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test files
+test-output/
+coverage/
+
+# Temporary files
+tmp/
+temp/
+*.tmp

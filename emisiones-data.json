@@ -1,0 +1,172 @@
+[
+  {
+    "clientId": 1554,
+    "clientName": "5TORRES DESARROLLOS ",
+    "rfc": "TDE1712041K9",
+    "patrones": [
+      {
+        "registroPatronal": "R1377865107",
+        "emisiones": [],
+        "error": "No emissions in table"
+      }
+    ],
+    "status": "SUCCESS"
+  },
+  {
+    "clientId": 1559,
+    "clientName": "ARA SPRINGS",
+    "rfc": "ASP040226E25",
+    "patrones": [],
+    "status": "ERROR",
+    "error": "Cannot read private key. ASN.1 object does not contain an RSAPrivateKey."
+  },
+  {
+    "clientId": 1534,
+    "clientName": "INNOVACION EN OPTICA APLICADA",
+    "rfc": "DLO180709UR1",
+    "patrones": [
+      {
+        "registroPatronal": "E3985344108",
+        "emisiones": [],
+        "error": "No emissions in table"
+      },
+      {
+        "registroPatronal": "R1371740108",
+        "emisiones": [],
+        "error": "No emissions in table"
+      },
+      {
+        "registroPatronal": "Y3761738107",
+        "emisiones": [],
+        "error": "No emissions in table"
+      },
+      {
+        "registroPatronal": "Y5236710108",
+        "emisiones": [],
+        "error": "No emissions in table"
+      }
+    ],
+    "status": "SUCCESS"
+  },
+  {
+    "clientId": 1593,
+    "clientName": "JOSE ANTONIO LOBATO CRUZ",
+    "rfc": "LOCX7210251Y9",
+    "patrones": [],
+    "status": "ERROR",
+    "error": "Cannot read X.509 certificate. ASN.1 object is not an X509v3 Certificate."
+  },
+  {
+    "clientId": 1677,
+    "clientName": "LOBATO PRUEBA",
+    "rfc": "LOCX7210251Y9",
+    "patrones": [],
+    "status": "ERROR",
+    "error": "Only 8, 16, 24, or 32 bits supported: 800"
+  },
+  {
+    "clientId": 1676,
+    "clientName": "ORGANIZAZION ABC",
+    "rfc": "LOCX7210251Y9",
+    "patrones": [],
+    "status": "ERROR",
+    "error": "Unable to decrypt PKCS#8 ShroudedKeyBag, wrong password?"
+  },
+  {
+    "clientId": 1694,
+    "clientName": "PAYJOB PRUEBA (CIOBERAL)",
+    "rfc": "SIC200925DS7",
+    "patrones": [],
+    "status": "ERROR",
+    "error": "Cannot read private key. ASN.1 object does not contain an RSAPrivateKey."
+  },
+  {
+    "clientId": 1645,
+    "clientName": "PRUEBA JOSE ANTONIO LOBATO CRUZ",
+    "rfc": "LOCX721025IY9",
+    "patrones": [],
+    "status": "ERROR",
+    "error": "Cannot read X.509 certificate. ASN.1 object is not an X509v3 Certificate."
+  },
+  {
+    "clientId": 1545,
+    "clientName": "SNS COSMETICOS NATURALES",
+    "rfc": "SCN120618MH8",
+    "patrones": [],
+    "status": "ERROR",
+    "error": "Cannot read X.509 certificate. ASN.1 object is not an X509v3 Certificate."
+  },
+  {
+    "clientId": 1675,
+    "clientName": "What The Code",
+    "rfc": "WCO220315IFA",
+    "patrones": [],
+    "status": "ERROR",
+    "error": "Unable to decrypt PKCS#8 ShroudedKeyBag, wrong password?"
+  },
+  {
+    "clientId": 1711,
+    "clientName": "ELABIMERE SA DE CV",
+    "rfc": "ELA210219E42",
+    "patrones": [
+      {
+        "registroPatronal": "Z2973695104",
+        "emisiones": [],
+        "error": "No emissions in table"
+      }
+    ],
+    "status": "SUCCESS"
+  },
+  {
+    "clientId": 1705,
+    "clientName": "GROUP INCORPORATE KAMBAUL SA DE CV (PRUEBA)",
+    "rfc": "GIK210128KN3",
+    "patrones": [
+      {
+        "registroPatronal": "R1377314106",
+        "emisiones": [],
+        "error": "No emissions in table"
+      }
+    ],
+    "status": "SUCCESS"
+  },
+  {
+    "clientId": 887,
+    "clientName": "KAMBAUL I",
+    "rfc": "N/A",
+    "patrones": [
+      {
+        "registroPatronal": "XAXXXXX",
+        "emisiones": [],
+        "error": "No emissions in table"
+      }
+    ],
+    "status": "SUCCESS"
+  },
+  {
+    "clientId": 1703,
+    "clientName": "MNK EXP",
+    "rfc": "MEX1612099D4",
+    "patrones": [
+      {
+        "registroPatronal": "Z6014889105",
+        "emisiones": [],
+        "error": "No emissions in table"
+      }
+    ],
+    "status": "SUCCESS"
+  },
+  {
+    "clientId": 888,
+    "clientName": "ZICOLET I",
+    "rfc": "N/A",
+    "patrones": [
+      {
+        "registroPatronal": "XAXXXXX",
+        "emisiones": [],
+        "error": "No emissions in table"
+      }
+    ],
+    "status": "SUCCESS"
+  }
+]

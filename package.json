@@ -1,0 +1,22 @@
+{
+  "name": "poc-ema-eba",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@types/archiver": "^6.0.3",
+    "@types/cheerio": "^1.0.0",
+    "@types/node-forge": "^1.3.14",
+    "@types/pg": "^8.15.5",
+    "archiver": "^7.0.1",
+    "cheerio": "^1.1.2",
+    "node-forge": "^1.3.1",
+    "pg": "^8.16.3"
+  }
+}
